@@ -1,0 +1,20 @@
+# Local credentials and shell state
+.ssh/
+.npmrc
+.env
+.env.*
+!.env.example
+.ash_history
+.bash_history
+.zsh_history
+.gitconfig
+.wget-hsts
+
+# Generated dependencies, caches, and logs
+.cache/
+.npm/
+node_modules/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
