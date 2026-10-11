@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quincy's TensorFlow Learning Lab</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3fa;color:#182b45;font:17px system-ui,sans-serif}
+main{max-width:780px;margin:auto;padding:30px 20px}header{margin-bottom:24px}h1{font-size:clamp(30px,6vw,44px);margin:10px 0}h2{font-size:23px;margin-top:0}
+.tag{color:#2554ac;font-weight:700}p{line-height:1.6}section{background:white;border:1px solid #d6e0ef;border-radius:18px;padding:24px;margin:18px 0}
+button{border:0;border-radius:10px;padding:14px 22px;background:#235cc0;color:white;font:inherit;font-weight:650;cursor:pointer}button:disabled{opacity:.5;cursor:wait}
+input{width:130px;max-width:100%;padding:12px;border:1px solid #9caec7;border-radius:8px;font:inherit;margin:8px 10px 8px 0}
+progress{width:100%;margin:18px 0;height:16px}.result{font-size:32px;font-weight:750;margin:16px 0;color:#235cc0}
+table{border-collapse:collapse;width:100%;text-align:left}th,td{padding:10px;border-bottom:1px solid #e2e8f2}
+.small{font-size:14px;color:#52647d}canvas{width:100%;height:auto;display:block}a{color:#235cc0}
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body><main>
+<header><span class="tag">QUINCY CHILDS · MACHINE LEARNING</span><h1>Teach a model a pattern.</h1>
+<p>See how examples become a prediction. This small model learns the relationship <strong>y = 2x + 1</strong> from five pairs of numbers.</p></header>
+<section><h2>1. Look at the examples</h2>
+<table><caption class="small">Training data</caption><thead><tr><th>Input x</th><th>Output y</th></tr></thead>
+<tbody><tr><td>−1</td><td>−1</td></tr><tr><td>−0.5</td><td>0</td></tr><tr><td>0</td><td>1</td></tr><tr><td>0.5</td><td>2</td></tr><tr><td>1</td><td>3</td></tr></tbody></table>
+<p class="small">A tensor is an array of numbers used by the model. These examples become two tensors with five rows and one column.</p></section>
+<section><h2>2. Train the model</h2><button id="train" disabled>Train model</button>
+<progress id="progress" max="160" value="0" aria-label="Training progress"></progress>
+<p id="status" role="status">Loading TensorFlow.js…</p>
+<canvas id="plot" width="640" height="340" role="img" aria-label="Training examples and learned prediction line"></canvas>
+<p class="small">Blue dots: examples. Green line: the model's learned relationship. Loss measures the prediction error; smaller is better.</p></section>
+<section><h2>3. Try a new input</h2><label for="input">Input x (−5 to 5)</label><br>
+<input id="input" type="number" min="-5" max="5" step="any" value="0.75">
+<button id="predict" disabled>Predict</button><p id="result" class="result" aria-live="polite">Train first</p>
+<p id="comparison" class="small">The prediction is computed by TensorFlow.js, not the example formula.</p></section>
+<footer class="small"><p id="version">TensorFlow.js 4.22.0 · Browser learning demo</p>
+<p>Training happens in this browser. Internet is required to load the library. Examples are synthetic; this demo is not a general-purpose AI assistant.</p>
+<a href="https://www.tensorflow.org/js/tutorials/setup">Official TensorFlow.js setup guide</a></footer>
+</main></body></html>
